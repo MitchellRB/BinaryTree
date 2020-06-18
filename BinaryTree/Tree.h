@@ -6,7 +6,11 @@ public:
 	Tree();
 	~Tree();
 
+	bool isEmpty() { return (m_root != nullptr); };
+
+	void insert(int value);
+
 protected:
-	TreeNode* root;
+	TreeNode* m_root;
 };
 
