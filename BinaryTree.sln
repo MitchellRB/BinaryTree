@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\RaylibStarterCPP.vcxproj", "{66F97E22-5E02-4257-B75C-DA71B7A17BFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Debug|x64.ActiveCfg = Debug|x64
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Debug|x64.Build.0 = Debug|x64
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Debug|x86.ActiveCfg = Debug|Win32
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Debug|x86.Build.0 = Debug|Win32
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Release|x64.ActiveCfg = Release|x64
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Release|x64.Build.0 = Release|x64
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Release|x86.ActiveCfg = Release|Win32
+		{66F97E22-5E02-4257-B75C-DA71B7A17BFF}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E77F3FB9-E28D-4FFA-AF00-DCC2C42F9036}
+	EndGlobalSection
+EndGlobal
