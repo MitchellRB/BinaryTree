@@ -27,8 +27,6 @@
 
 #include "Tree.h"
 
-#include <time.h>
-
 
 int main(int argc, char* argv[])
 {
@@ -41,7 +39,13 @@ int main(int argc, char* argv[])
 
     Tree t;
 
-    srand(time(nullptr));
+    t.insert(10);
+    t.insert(1);
+    t.insert(5);
+    t.insert(20);
+    t.insert(2);
+
+    int target = 20;
 
     SetTargetFPS(60);
 
@@ -52,8 +56,13 @@ int main(int argc, char* argv[])
     {
         // Update
 
-        t.insert(rand() % 100);
 
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            t.remove(target);
+
+            target /= 2;
+        }
         // Draw
 
         BeginDrawing();

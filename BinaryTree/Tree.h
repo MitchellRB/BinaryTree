@@ -10,6 +10,8 @@ public:
 
 	void insert(int value);
 
+	void remove(int value);
+
 	TreeNode* find(int value);
 
 	void draw();

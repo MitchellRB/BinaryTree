@@ -52,6 +52,97 @@ void Tree::insert(int value)
 	}
 }
 
+//Remove the node with the given value from the tree
+void Tree::remove(int value)
+{
+	TreeNode* target;
+	TreeNode* parent;
+
+	findNode(value, target, parent);
+
+	if (target == nullptr)
+	{
+		return;
+	}
+
+	if (target->hasLeft() && target->hasRight())
+	{
+		//Get the smallest number from the right subtree
+		TreeNode* lowRight = target->getRight();
+		while (lowRight->hasLeft())
+		{
+			lowRight = lowRight->getLeft();
+		}
+
+		int temp = lowRight->getValue();
+
+		remove(temp);
+
+		target->setValue(temp);
+		return;
+	}
+	else if (target->hasLeft())
+	{
+		if (parent != nullptr)
+		{
+			if (parent->getLeft() == target)
+			{
+				parent->setLeft(target->getLeft());
+			}
+			if (parent->getRight() == target)
+			{
+				parent->setRight(target->getLeft());
+			}
+		}
+		else
+		{
+			m_root = target->getLeft();
+		}
+		delete target;
+		return;
+	}
+	else if (target->hasRight())
+	{
+		if (parent != nullptr)
+		{
+			if (parent->getLeft() == target)
+			{
+				parent->setLeft(target->getRight());
+			}
+			if (parent->getRight() == target)
+			{
+				parent->setRight(target->getRight());
+			}
+		}
+		else
+		{
+			m_root = target->getRight();
+		}
+		delete target;
+		return;
+	}
+	else
+	{
+		if (parent != nullptr)
+		{
+			if (parent->getLeft() == target)
+			{
+				parent->setLeft(nullptr);
+			}
+			if (parent->getRight() == target)
+			{
+				parent->setRight(nullptr);
+			}
+		}
+		else
+		{
+			m_root = nullptr;
+		}
+		delete target;
+		return;
+	}
+}
+
 //Get a pointer to the node with a given value
 TreeNode* Tree::find(int value)
 {
