@@ -1,4 +1,6 @@
 #pragma once
+#include "raylib.h"
+
 class TreeNode
 {
 public:
@@ -15,6 +17,8 @@ public:
 	void setValue(int value) { m_value = value; };
 	void setLeft(TreeNode* node) { m_left = node; };
 	void setRight(TreeNode* node) { m_right = node; };
+
+	void draw(int x, int y);
 
 protected:
 	int m_value;

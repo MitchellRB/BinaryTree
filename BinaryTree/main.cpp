@@ -27,6 +27,9 @@
 
 #include "Tree.h"
 
+#include <time.h>
+
+
 int main(int argc, char* argv[])
 {
     // Initialization
@@ -36,7 +39,12 @@ int main(int argc, char* argv[])
 
     InitWindow(screenWidth, screenHeight, "Binary tree");
 
+    Tree t;
+
+    srand(time(nullptr));
+
     SetTargetFPS(60);
+
     //--------------------------------------------------------------------------------------
 
     // Main game loop
@@ -44,12 +52,15 @@ int main(int argc, char* argv[])
     {
         // Update
 
+        t.insert(rand() % 100);
 
         // Draw
 
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
+
+        t.draw();
 
         EndDrawing();
         //----------------------------------------------------------------------------------
