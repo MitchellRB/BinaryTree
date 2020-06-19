@@ -50,3 +50,47 @@ void Tree::insert(int value)
 		previous->setRight(new TreeNode(value));
 	}
 }
+
+TreeNode* Tree::find(int value)
+{
+	TreeNode* current = m_root;
+	while (current != nullptr)
+	{
+		if (value == current->getValue())
+		{
+			break;
+		}
+		else if (value > current->getValue())
+		{
+			current = current->getRight();
+		}
+		else if (value < current->getValue())
+		{
+			current = current->getLeft();
+		}
+	}
+	return current;
+}
+
+void Tree::findNode(int value, TreeNode*& outNode, TreeNode*& outParent)
+{
+	outNode = m_root;
+	outParent = nullptr;
+	while (outNode != nullptr)
+	{
+		if (value == outNode->getValue())
+		{
+			break;
+		}
+		else if (value > outNode->getValue())
+		{
+			outParent = outNode;
+			outNode = outNode->getRight();
+		}
+		else if (value < outNode->getValue())
+		{
+			outParent = outNode;
+			outNode = outNode->getLeft();
+		}
+	}
+}

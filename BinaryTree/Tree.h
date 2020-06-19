@@ -10,7 +10,10 @@ public:
 
 	void insert(int value);
 
+	TreeNode* find(int value);
+
 protected:
 	TreeNode* m_root;
-};
 
+	void findNode(int value, TreeNode*& outNode, TreeNode*& outParent);
+};
