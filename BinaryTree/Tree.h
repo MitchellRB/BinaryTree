@@ -14,12 +14,14 @@ public:
 
 	TreeNode* find(int value);
 
-	void draw();
+	void draw(TreeNode* selected = nullptr);
 
 protected:
 	TreeNode* m_root;
 
 	void findNode(int value, TreeNode*& outNode, TreeNode*& outParent);
 
-	void draw(TreeNode* pNode,int x, int y, int spacing);
+	void draw(TreeNode* pNode,int x, int y, int spacing, TreeNode* selected);
+
+	void recursiveDelete(TreeNode* node);
 };

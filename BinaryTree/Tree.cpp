@@ -7,7 +7,7 @@ Tree::Tree()
 
 Tree::~Tree()
 {
-	
+	if (m_root != nullptr)	recursiveDelete(m_root);
 }
 
 //Add a node with the given value
@@ -166,13 +166,13 @@ TreeNode* Tree::find(int value)
 }
 
 //Draw the entire tree
-void Tree::draw()
+void Tree::draw(TreeNode* selected)
 {
-	draw(m_root, 400, 40, 400);
+	draw(m_root, 400, 40, 400, selected);
 }
 
 //Recursively draw a node and its children
-void Tree::draw(TreeNode* pNode, int x, int y, int spacing)
+void Tree::draw(TreeNode* pNode, int x, int y, int spacing, TreeNode* selected)
 {
 	int ySpacing = 60;
 	spacing /= 2;
@@ -181,15 +181,30 @@ void Tree::draw(TreeNode* pNode, int x, int y, int spacing)
 		if (pNode->hasLeft())
 		{
 			DrawLine(x, y, x - spacing, y + ySpacing, BLUE);
-			draw(pNode->getLeft(), x - spacing, y + ySpacing, spacing);
+			draw(pNode->getLeft(), x - spacing, y + ySpacing, spacing, selected);
 		}
 		if (pNode->hasRight())
 		{
 			DrawLine(x, y, x + spacing, y + ySpacing, BLUE);
-			draw(pNode->getRight(), x + spacing, y + ySpacing, spacing);
+			draw(pNode->getRight(), x + spacing, y + ySpacing, spacing, selected);
 		}
-		pNode->draw(x, y);
+		pNode->draw(x, y, selected);
 	}
+}
+
+void Tree::recursiveDelete(TreeNode* node)
+{
+	if (node->hasLeft())
+	{
+		recursiveDelete(node->getLeft());
+		node->setLeft(nullptr);
+	}
+	if (node->hasRight())
+	{
+		recursiveDelete(node->getRight());
+		node->setRight(nullptr);
+	}
+	delete node;
 }
 
 //Find the node with a given value

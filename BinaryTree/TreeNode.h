@@ -18,7 +18,7 @@ public:
 	void setLeft(TreeNode* node) { m_left = node; };
 	void setRight(TreeNode* node) { m_right = node; };
 
-	void draw(int x, int y);
+	void draw(int x, int y, TreeNode* selected);
 
 protected:
 	int m_value;

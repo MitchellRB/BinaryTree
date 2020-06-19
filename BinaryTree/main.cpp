@@ -39,13 +39,9 @@ int main(int argc, char* argv[])
 
     Tree t;
 
-    t.insert(10);
-    t.insert(1);
-    t.insert(5);
-    t.insert(20);
-    t.insert(2);
+    int selectedValue = 0;
 
-    int target = 20;
+    TreeNode* selected = nullptr;
 
     SetTargetFPS(60);
 
@@ -56,24 +52,44 @@ int main(int argc, char* argv[])
     {
         // Update
 
+        GuiValueBox(Rectangle{ 0,0,125,25 }, "number", &selectedValue, 0, INT_MAX, true);
 
-        if (IsKeyPressed(KEY_ENTER))
+        if (GuiButton(Rectangle{ 130,0,125,25 },GuiIconText(RICON_FILE_SAVE, "Insert")))
         {
-            t.remove(target);
-
-            target /= 2;
+            t.insert(selectedValue);
         }
+
+        if (GuiButton(Rectangle{ 130,30,125,25 },GuiIconText(RICON_FILE_DELETE, "Remove")))
+        {
+            if (selected != nullptr && selected->getValue() == selectedValue)
+            {
+                selected = nullptr;
+            }
+            t.remove(selectedValue);
+        }
+
+        if (GuiButton(Rectangle{ 0,30,125,25 },"Find"))
+        {
+            selected = t.find(selectedValue);
+        }
+
+        if  (GuiButton(Rectangle{ 0,60,125,25 },"Reset selection"))
+        {
+            selected = nullptr;
+        }
+
         // Draw
 
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
 
-        t.draw();
+        t.draw(selected);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
+
 
     // De-Initialization
     CloseWindow();        // Close window and OpenGL context
