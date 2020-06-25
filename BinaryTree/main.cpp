@@ -43,7 +43,16 @@ int main(int argc, char* argv[])
 
     TreeNode* selected = nullptr;
 
+    Vector2 offset = Vector2{ 0,0 };
+
     SetTargetFPS(60);
+
+    t.insert(50);
+
+    for (size_t i = 0; i < 20; i++)
+    {
+        t.insert(GetRandomValue(0, 100));
+    }
 
     //--------------------------------------------------------------------------------------
 
@@ -73,9 +82,26 @@ int main(int argc, char* argv[])
             selected = t.find(selectedValue);
         }
 
-        if  (GuiButton(Rectangle{ 0,60,125,25 },"Reset selection"))
+        if  (GuiButton(Rectangle{ 0,60,125,25 },"Clear selection"))
         {
             selected = nullptr;
+        }
+
+        if (IsKeyPressed(KEY_LEFT))
+        {
+            offset.x += 20;
+        }
+        if (IsKeyPressed(KEY_RIGHT))
+        {
+            offset.x -= 20;
+        }
+        if (IsKeyPressed(KEY_UP))
+        {
+            offset.y += 20;
+        }
+        if (IsKeyPressed(KEY_DOWN))
+        {
+            offset.y -= 20;
         }
 
         // Draw
@@ -84,9 +110,20 @@ int main(int argc, char* argv[])
 
         ClearBackground(RAYWHITE);
 
-        t.draw(selected);
+        DrawRectangle(offset.x, offset.y, 5, 5, BLACK);
+
+        DrawRectangle(screenWidth + offset.x - 5, offset.y, 5, 5, BLACK);
+
+        DrawRectangle(offset.x, screenHeight + offset.y - 5, 5, 5, BLACK);
+
+        DrawRectangle(screenWidth + offset.x - 5, screenHeight + offset.y - 5, 5, 5, BLACK);
+
+        t.draw(offset, selected);
+
+        DrawText("Move view with arrow keys", 5, 100, 14, GRAY);
 
         EndDrawing();
+
         //----------------------------------------------------------------------------------
     }
 

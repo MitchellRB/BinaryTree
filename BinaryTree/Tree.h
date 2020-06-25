@@ -14,7 +14,7 @@ public:
 
 	TreeNode* find(int value);
 
-	void draw(TreeNode* selected = nullptr);
+	void draw(Vector2 offset, TreeNode* selected = nullptr);
 
 protected:
 	TreeNode* m_root;

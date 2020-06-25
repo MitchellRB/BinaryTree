@@ -166,16 +166,16 @@ TreeNode* Tree::find(int value)
 }
 
 //Draw the entire tree
-void Tree::draw(TreeNode* selected)
+void Tree::draw(Vector2 offset, TreeNode* selected)
 {
-	draw(m_root, 400, 40, 400, selected);
+	draw(m_root, 400 + offset.x, 40 + offset.y, 400, selected);
 }
 
 //Recursively draw a node and its children
 void Tree::draw(TreeNode* pNode, int x, int y, int spacing, TreeNode* selected)
 {
 	int ySpacing = 60;
-	spacing /= 2;
+	spacing /= 1.9;
 	if (pNode != nullptr)
 	{
 		if (pNode->hasLeft())
