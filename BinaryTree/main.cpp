@@ -47,13 +47,6 @@ int main(int argc, char* argv[])
 
     SetTargetFPS(60);
 
-    t.insert(50);
-
-    for (size_t i = 0; i < 20; i++)
-    {
-        t.insert(GetRandomValue(0, 100));
-    }
-
     //--------------------------------------------------------------------------------------
 
     // Main game loop
